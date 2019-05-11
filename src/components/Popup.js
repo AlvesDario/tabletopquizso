@@ -1,30 +1,35 @@
 import React, {Component} from 'react';
 
-
-
 export default class Popup extends Component {
     state={
-        respostas: [],
-        pergunta: "",
+        respostas: {},
+        pergunta: {},
+        temp: {},
     }
     
     componentDidMount = () => {
         this.setState({
-            pergunta: this.props.pergunta.pergunta,
-            respostas: this.props.pergunta.respostas
+            pergunta: this.props.pergunta,
         });
     }
 
     render() {
         console.log("pergunta: ", this.props.pergunta);
+
         return (
           <div className='popup' style={style['popup']}>
             <div className='popup_inner' style={style['popup_inner']}>
-              <h1>{this.state.pergunta}</h1>
-              <button onClick={this.props.responde.bind(this, this.state.pergunta, this.state.respostas)}>{this.state.respostas}</button>
-              <button onClick={this.props.responde.bind(this, this.props.resposta1)}>{this.props.resposta1}</button>
-              <button onClick={this.props.responde.bind(this, this.props.resposta2)}>{this.props.resposta2}</button>
-              <button onClick={this.props.responde.bind(this, this.props.resposta3)}>{this.props.resposta3}</button>
+              <h1>Pergunta: </h1>
+              <h2>{ this.props.pergunta.pergunta }</h2>
+              <p>{ this.props.pergunta.respostas[0] }</p>
+              <p>{ this.props.pergunta.respostas[1] }</p>
+              <p>{ this.props.pergunta.respostas[2] }</p>
+              <p>{ this.props.pergunta.respostas[3] }</p>
+
+              <button onClick={this.props.responde.bind(this)}>A</button>
+              <button onClick={this.props.responde.bind(this)}>B</button>
+              <button onClick={this.props.responde.bind(this)}>C</button>
+              <button onClick={this.props.responde.bind(this)}>D</button>
             </div>
           </div>
         );

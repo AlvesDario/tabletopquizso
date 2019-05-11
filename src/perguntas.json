@@ -1,12 +1,123 @@
 [
-    {
-      "id":"1",
-      "pergunta":"quanto e 1+1",
-      "resposta":"2"
-    },
-    {
-      "id":"2",
-      "pergunta":"quanto e 2+1",
-      "resposta":"3"
-    }
+  {
+  "id": "1",
+    "pergunta": "Na alocação particionada estática, a memória:",
+    "resposta": "",
+    "respostas": [
+      "É dividida em pedaços de tamanho fixos",
+      "É dividida em pedaços suculentos",
+      "Utiliza espaços variáveis de memória",
+      "Utiliza espaços siderais profundos"
+    ]
+  },
+  {
+    "id": "2",
+    "pergunta": "Não são problemas de segurança na alocação contígua simples:",
+    "resposta": "",
+    "respostas": [
+      "Acesso à memória destinada ao S.O.",
+      "Desperdício de espaço de memória",
+      "Fácil implementação e do código reduzido",
+      "Não há problemas de segurança"
+    ]
+  },
+  {
+    "id": "3",
+    "pergunta": "O que é swapping?",
+    "resposta": "",
+    "respostas": [
+      "Técnica que resolve o problema de hardware",
+      "Termo alternativo e técnico para swing",
+      "Técnica que resolve o problema da insuficiência de memória principal",
+      "Técnica que resolve o problema da insuficiência renal do programador"
+    ]
+  },
+  {
+    "id": "4",
+    "pergunta": "Não são funções básicas da gerência de memória:",
+    "resposta": "",
+    "respostas": [
+      "Maximizar o compartilhamento do processador",
+      "Permitir que novos processos sejam aceitos e executados",
+      "Liberar espaço para novos processos",
+      "Aumentar a velocidade do processador"
+    ]
+  },
+  {
+    "id": "5",
+    "pergunta": "Não são estratégias de alocação de partição",
+    "resposta": "",
+    "respostas": [
+      "Best-fit",
+      "Smart-fit",
+      "Worst fit",
+      "Não existem estratégias"
+    ]
+  },
+  {
+    "id": "6",
+    "pergunta": "Na estratégia worst-fit:",
+    "resposta": "",
+    "respostas": [
+      "A melhor partição é escolhida",
+      "A pior partição é escolhida",
+      "Nenhuma partição é escolhida",
+      "Aumenta o problema da fragmentação"
+    ]
+  },
+  {
+    "id": "7",
+    "pergunta": "A memória virtual permite:",
+    "resposta": "",
+    "respostas": [
+      "Aumentar a fragmentação da memória principal",
+      "Um número maior de processos compartilhando a memória principal",
+      "Limita o tamanho da memória física disponível",
+      "Torna real a memória"
+    ]
+  },
+  {
+    "id": "8",
+    "pergunta": "O conceito de memória virtual se aproxima muito da ideia de:",
+    "resposta": "",
+    "respostas": [
+      "Um vetor",
+      "Um setor",
+      "Um diagrama",
+      "Um aparelho"
+    ]
+  },
+  {
+    "id": "9",
+    "pergunta": "Um processo é formado pelo:",
+    "resposta": "",
+    "respostas": [
+      "Contexto de software, contexto de programação e pelo espaço de endereçamento",
+      "Contexto de hardware, contexto de swap e pelo espaço de endereçamento",
+      "Contexto de hardware, contexto de software e pelo espaço de endereçamento",
+      "Contexto de gerenciamento, contexto de software e pelo espaço de endereçamento"
+    ]
+  },
+  {
+    "id": "10",
+    "pergunta": "O espaço de endereçamento virtual:",
+    "resposta": "",
+    "respostas": [
+      "Não tem nenhuma relação direta com os endereços no espaço real",
+      "Tem nenhuma relação direta com os endereços no espaço real",
+      "Mostra os caminhos do hardware",
+      "Não tem relação direta com os correios"
+    ]
+  },
+  {
+    "id": "11",
+    "pergunta": "Sobre o Mapeamento:",
+    "resposta": "",
+    "respostas": [
+      "É um mecanismo que transforma os endereços não virtuais em endereços reais",
+      "É um mecanismo que transforma os endereços reais em endereços virtuais",
+      "É um mecanismo que transforma os endereços virtuais em endereços surreais",
+      "É um mecanismo que transforma os endereços virtuais em endereços reais"
+    ]
+  }
 ]

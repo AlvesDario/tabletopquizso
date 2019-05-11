@@ -24,6 +24,7 @@ let stylePos={
     background: 'rgba(25,25,25,0.3)',
     border: '3px solid rgba(255,255,102,0.5)',
     display: 'inline-block',
+    
     // boxSizing: border-box,
     width: '80px',
     height: '80px',
