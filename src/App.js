@@ -71,6 +71,11 @@ export default class App extends Component {
   // toggle popup
   togglePopup() {
     this.setState({
+      temp:{
+        pergunta: this.state.perguntas[Math.floor(Math.random() * this.state.perguntas.length)]
+      }
+    });
+    this.setState({
       showPopup: !this.state.showPopup
     });
   }
@@ -94,7 +99,7 @@ export default class App extends Component {
       <Mapa posicoes={this.state.map} update={this.caminha}/>
       {this.state.showPopup ? 
           <Popup
-            pergunta={this.state.perguntas[0]}
+            pergunta={this.state.temp.pergunta}
             responde={this.checkResposta}
             closePopup={this.togglePopup}
           />

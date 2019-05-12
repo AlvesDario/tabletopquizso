@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import { identifier } from '@babel/types';
 
 export default class Popup extends Component {
     state={
@@ -14,7 +15,7 @@ export default class Popup extends Component {
     }
 
     render() {
-        console.log("pergunta: ", this.props.pergunta);
+        let { id } = this.props.pergunta;
 
         return (
           <div className='popup' style={style['popup']}>
@@ -26,10 +27,10 @@ export default class Popup extends Component {
               <p>{ this.props.pergunta.respostas[2] }</p>
               <p>{ this.props.pergunta.respostas[3] }</p>
 
-              <button onClick={this.props.responde.bind(this)}>A</button>
-              <button onClick={this.props.responde.bind(this)}>B</button>
-              <button onClick={this.props.responde.bind(this)}>C</button>
-              <button onClick={this.props.responde.bind(this)}>D</button>
+              <button onClick={this.props.responde.bind(this, id, 0)}>A</button>
+              <button onClick={this.props.responde.bind(this, id, 1)}>B</button>
+              <button onClick={this.props.responde.bind(this, id, 2)}>C</button>
+              <button onClick={this.props.responde.bind(this, id, 3)}>D</button>
             </div>
           </div>
         );
