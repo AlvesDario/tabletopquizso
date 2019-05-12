@@ -11,8 +11,8 @@ export default class Mapa extends Component {
     render(){
         console.log("props mapa ", this.state.posicoes[0]);
         return(
-            <div>
-                {this.state.posicoes.map(pos => <Posicao pos={pos} key={pos.id}/>)}
+            <div style={{width: '700px', margin:'auto', display: 'block'}}>
+                { this.state.posicoes.map(pos => <Posicao pos = { pos } key = { pos.id }/>) }
             </div>
         );
     }

@@ -2,19 +2,23 @@ import React, {Component} from 'react';
 
 
 export default class Pos extends Component {
-    state={
+    state = {
 
     }
+
     render(){
+        console.log("pos", this.props.players)
         return(
-            <div style={stylePos}>
-                <p style={stylep}>hello{this.props.pos.players.id}</p>
-            </div>
+        <div style={stylePos}>
+          <h6 style={{marginTop:"0px", marginBottom:'0px'}}>{this.props.pos.id}</h6>
+          {this.props.pos.players.map(p => <p style={stylep} key={p.id}>Player: {p.id}</p>)}
+        </div>
         );
     }
 }
+
 let stylep = {
-    font: 'normal normal bold 17px "Lucida Sans Unicode", "Lucida Grande", sans-serif',
+    font: 'normal normal bold 12px "Lucida Sans Unicode", "Lucida Grande", sans-serif',
     color: 'rgba(255,255,255,1)',
     textAlign: 'center',
 }
