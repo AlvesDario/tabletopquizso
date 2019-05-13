@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
-import { identifier } from '@babel/types';
 
 export default class Popup extends Component {
     state={
         respostas: {},
         pergunta: {},
         temp: {},
+        r:null,
     }
     
     componentDidMount = () => {
@@ -14,23 +14,45 @@ export default class Popup extends Component {
         });
     }
 
+    rsp = (r) => {
+      console.log(r);
+      this.setState({r: r});
+    }
+
     render() {
-        let { id } = this.props.pergunta;
+        let { r } = this.state;
 
         return (
           <div className='popup' style={style['popup']}>
             <div className='popup_inner' style={style['popup_inner']}>
               <h1>Pergunta: </h1>
               <h2>{ this.props.pergunta.pergunta }</h2>
-              <p>{ this.props.pergunta.respostas[0] }</p>
-              <p>{ this.props.pergunta.respostas[1] }</p>
-              <p>{ this.props.pergunta.respostas[2] }</p>
-              <p>{ this.props.pergunta.respostas[3] }</p>
+              <form onSubmit={this.props.responde.bind(this, r)} >
+                <label style={{display: 'block'}}>
+                  <input type="radio" name="resposta" value="0" onChange={()=>this.rsp(0)}/>{ this.props.pergunta.respostas[0] }
+                </label>
+                <label style={{display: 'block'}}>
+                  <input type="radio" name="resposta" value="1" onChange={()=>this.rsp(1)}/>{ this.props.pergunta.respostas[1] }
+                </label>
+                <label style={{display: 'block'}}>
+                  <input type="radio" name="resposta" value="2" onChange={()=>this.rsp(2)}/>{ this.props.pergunta.respostas[2] }
+                </label>
+                <label style={{display: 'block'}}>
+                  <input type="radio" name="resposta" value="3" onChange={()=>this.rsp(3)}/>{ this.props.pergunta.respostas[3] }
+                </label>
+                <button type="submit">Confirmar</button>
+              </form>
+{/*               
 
-              <button onClick={this.props.responde.bind(this, id, 0)}>A</button>
-              <button onClick={this.props.responde.bind(this, id, 1)}>B</button>
-              <button onClick={this.props.responde.bind(this, id, 2)}>C</button>
-              <button onClick={this.props.responde.bind(this, id, 3)}>D</button>
+              <p>A) </p>
+              <p>B) </p>
+              <p>C) </p>
+              <p>D) </p>
+
+              <button onClick={this.rsp(0)}>A</button>
+              <button onClick={this.rsp(1)}>B</button>
+              <button onClick={this.rsp(2)}>C</button>
+              <button onClick={this.rsp(3)}>D</button> */}
             </div>
           </div>
         );

@@ -2,7 +2,7 @@
   {
   "id": "1",
     "pergunta": "Na alocação particionada estática, a memória:",
-    "resposta": "",
+    "resposta": "0",
     "respostas": [
       "É dividida em pedaços de tamanho fixos",
       "É dividida em pedaços suculentos",

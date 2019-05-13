@@ -68,11 +68,12 @@ export default class App extends Component {
     this.setState({ temp: { dado: newnum } });
   }
   
-  // toggle popup
+  // toggle popup e escolhe uma pergunta aleatória
   togglePopup() {
     this.setState({
       temp:{
-        pergunta: this.state.perguntas[Math.floor(Math.random() * this.state.perguntas.length)]
+        pergunta: this.state.perguntas[0]
+          //Math.floor(Math.random() * this.state.perguntas.length)]
       }
     });
     this.setState({
@@ -81,10 +82,11 @@ export default class App extends Component {
   }
 
   // Verifica resposta
-  checkResposta = (pergunta, resposta) => {
+  checkResposta = (r) => {
     this.togglePopup();
-    if(pergunta.resposta === resposta){
-      console.log("pode caminhar");console.log(resposta);
+    // console.log(r," : ", Number.parseInt(this.state.temp.pergunta.resposta));
+    if(Number.parseInt(this.state.temp.pergunta.resposta)===r){
+      console.log("pode caminhar");console.log(r);
     }
   }
 
@@ -94,17 +96,17 @@ export default class App extends Component {
       <Header/>
       <Dado onClick = { this.updateDado } num = { this.state.temp.dado }/>
       {/* Gera a tela de pergunta */}
-      <button onClick={this.togglePopup.bind(this)}>show popup</button>
+      <button onClick={ this.togglePopup.bind(this) }>show popup</button>
       
-      <Mapa posicoes={this.state.map} update={this.caminha}/>
+      <Mapa posicoes={ this.state.map } update={ this.caminha }/>
       {this.state.showPopup ? 
-          <Popup
-            pergunta={this.state.temp.pergunta}
-            responde={this.checkResposta}
-            closePopup={this.togglePopup}
-          />
-          : null
-        }
+        <Popup
+          pergunta={ this.state.temp.pergunta }
+          responde={ this.checkResposta }
+          closePopup={ this.togglePopup }
+        />
+        : null
+      }
     </div>
     );
   }
