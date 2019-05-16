@@ -1,13 +1,13 @@
 import React, {Component} from 'react';
-// import logo from './logo.svg';
 import './App.css';
 import Header from './components/Header';
 import Mapa from './components/Mapa';
 import Popup from './components/Popup';
 import Perguntas from './perguntas.json';
 import Dado from './components/Dado';
+import background from './imagens/matrix.jpeg';
 
-var FOUN=0.1;
+var FOUN=0.2;
 
 export default class App extends Component {
   state = {
@@ -21,20 +21,20 @@ export default class App extends Component {
         pos: 0
       }
     ],
-    temp: {
-      player: {},
-      pergunta: {},
-      dado: 0,
-    },
+    temp_player: {},
+    temp_pergunta: {},
+    dado: 0,
+    
     map: [],
     perguntas: Perguntas,
     showPopup: false
   }
   
   // funções realizadas ao início
-  componentDidMount = () => {
-    for(let x = 1; x < 31; x++){
+  componentDidMount = async () => {
+    for(let x = 0; x < 30; x++){
       let foun=0;
+      
       if(x > 6 && x < 24){
         foun = Math.random() < FOUN ?
           1 : Math.random() < FOUN ?
@@ -42,40 +42,49 @@ export default class App extends Component {
       }
       this.state.map.push({ 
         id: x, 
-        players: [],
         foun: foun
       });
     }
-    this.state.map[0].players = this.state.players;
+    this.state.map[0].players = await this.state.players;
+    await this.setState({ temp_player: this.state.players.pop() });
+    console.log("mount",this.state.temp_player);
     console.log(this.state.map);
   }
 
   // Troca o jogador atual para o próximo
-  mudajogador = () => {
-    this.state.players.unshift(this.state.temp.player);
-    this.setState({ temp: { player: this.state.players.pop() } });
+  mudajogador = async () => {
+    this.state.players.unshift(this.state.temp_player);
+    await this.setState({ temp_player: this.state.players.pop() });
+  }
+
+  tem_pergunta = () => {
+
   }
 
   // move o jogador atual (passos)casas
   caminha = (passos) => {
-    let newpos = this.state.temp.player+passos;
-    this.setState({temp: { player: newpos } });
+    let newpos = this.state.temp_player;
+    newpos['pos'] += passos;
+
+    this.setState({temp_player: newpos });
+    this.mudajogador();
   }
 
   // atualiza o número do dado na variável temp
-  updateDado = (newnum) => {
+  updateDado = async (newnum) => {
     console.log(newnum);
-    this.setState({ temp: { dado: newnum } });
+    await this.setState({ dado: newnum });
+    this.caminha(newnum);
+    console.log("dado", this.state.dado);
   }
   
   // toggle popup e escolhe uma pergunta aleatória
   togglePopup() {
     this.setState({
-      temp:{
-        pergunta: this.state.perguntas[0]
-          //Math.floor(Math.random() * this.state.perguntas.length)]
+      temp_pergunta: this.state.perguntas[
+          Math.floor(Math.random() * this.state.perguntas.length)]
       }
-    });
+    );
     this.setState({
       showPopup: !this.state.showPopup
     });
@@ -85,25 +94,27 @@ export default class App extends Component {
   checkResposta = (r) => {
     this.togglePopup();
     // console.log(r," : ", Number.parseInt(this.state.temp.pergunta.resposta));
-    if(Number.parseInt(this.state.temp.pergunta.resposta)===r){
+    if(Number.parseInt(this.state.temp_pergunta.resposta)===r){
       console.log("pode caminhar");console.log(r);
     }
   }
 
   render(){
+    // let jogadores=this.state.players;
+    // jogadores.push(this.state.temp_player);
     return(
-    <div className="App">
-      <Header/>
-      <Dado onClick = { this.updateDado } num = { this.state.temp.dado }/>
+    <div className = "App" >
+      <Header p={this.state.temp_player}/>
+      <Dado onClick = { this.updateDado } num = { this.state.dado }/>
       {/* Gera a tela de pergunta */}
       <button onClick={ this.togglePopup.bind(this) }>show popup</button>
-      
-      <Mapa posicoes={ this.state.map } update={ this.caminha }/>
-      {this.state.showPopup ? 
+
+      <Mapa posicoes = { this.state.map } update = { this.caminha } players = {this.state.players.concat(this.state.temp_player)} />
+      { this.state.showPopup ? 
         <Popup
-          pergunta={ this.state.temp.pergunta }
-          responde={ this.checkResposta }
-          closePopup={ this.togglePopup }
+          pergunta = { this.state.temp_pergunta }
+          responde = { this.checkResposta }
+          closePopup = { this.togglePopup }
         />
         : null
       }

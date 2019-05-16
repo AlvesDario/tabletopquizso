@@ -6,12 +6,17 @@ export default class Pos extends Component {
 
     }
 
+
+
     render(){
-        console.log("pos", this.props.players)
+        
         return(
         <div style={stylePos}>
-          <h6 style={{marginTop:"0px", marginBottom:'0px'}}>{this.props.pos.id}</h6>
-          {this.props.pos.players.map(p => <p style={stylep} key={p.id}>Player: {p.id}</p>)}
+          <h6 style={ {marginTop:"0px", marginBottom:'0px'} }>{ this.props.pos.id+1 }</h6>
+          { this.props.jog.map(p => this.props.pos.id === p.pos ? 
+                <p style={stylep} key={ p.id }>Jogador: { p.id }</p>
+                : null)
+          }
         </div>
         );
     }
@@ -36,7 +41,5 @@ let stylePos={
     // padding: '1px,
     borderRadius: '10px',
     // -webkit-border-radius: 10px,
-    // border-radius: 10px,
-    
-    
+    // border-radius: 10px,    
 }
