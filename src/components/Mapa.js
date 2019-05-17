@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import Posicao from './Pos';
 
+
 export default class Mapa extends Component {
     state={
         posicoes: [],

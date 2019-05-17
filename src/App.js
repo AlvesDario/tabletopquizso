@@ -5,7 +5,7 @@ import Mapa from './components/Mapa';
 import Popup from './components/Popup';
 import Perguntas from './perguntas.json';
 import Dado from './components/Dado';
-import background from './imagens/matrix.jpeg';
+import background from './imagens/background.jpeg';
 
 var FOUN=0.2;
 
@@ -35,11 +35,12 @@ export default class App extends Component {
     for(let x = 0; x < 30; x++){
       let foun=0;
       
-      if(x > 6 && x < 24){
-        foun = Math.random() < FOUN ?
-          1 : Math.random() < FOUN ?
-           -1 : 0;
+      if(x > 6 && x < 24){ foun=1
+        // foun = Math.random() < FOUN ?
+        //   1 : Math.random() < FOUN ?
+        //    -1 : 0;
       }
+
       this.state.map.push({ 
         id: x, 
         foun: foun
@@ -57,8 +58,8 @@ export default class App extends Component {
     await this.setState({ temp_player: this.state.players.pop() });
   }
 
-  tem_pergunta = () => {
-
+  tem_pergunta = (foun) => {
+    if(foun!==0)this.caminha(6*foun);
   }
 
   // move o jogador atual (passos)casas
@@ -66,7 +67,11 @@ export default class App extends Component {
     let newpos = this.state.temp_player;
     newpos['pos'] += passos;
 
-    this.setState({temp_player: newpos });
+    this.setState({ temp_player: newpos });
+
+    //checa se na possição atual tem pergunta 
+    if(this.state.map[newpos.pos].foun !== 0)
+      this.togglePopup();
     this.mudajogador();
   }
 
@@ -95,7 +100,7 @@ export default class App extends Component {
     this.togglePopup();
     // console.log(r," : ", Number.parseInt(this.state.temp.pergunta.resposta));
     if(Number.parseInt(this.state.temp_pergunta.resposta)===r){
-      console.log("pode caminhar");console.log(r);
+      this.caminha(this.state.map[this.state.temp_player.pos].foun *  6);
     }
   }
 
@@ -103,7 +108,8 @@ export default class App extends Component {
     // let jogadores=this.state.players;
     // jogadores.push(this.state.temp_player);
     return(
-    <div className = "App" >
+    <div className = "App" style={bckgrndStyle}>
+      {/* <img src={background}/> */}
       <Header p={this.state.temp_player}/>
       <Dado onClick = { this.updateDado } num = { this.state.dado }/>
       {/* Gera a tela de pergunta */}
@@ -121,4 +127,11 @@ export default class App extends Component {
     </div>
     );
   }
+}
+
+let bckgrndStyle={
+  backgroundImage: "url("+background+")",
+  backgroundPosition: "center",
+  backgroundRepeat: "no-repeat",
+  backgroundSize: "cover"
 }

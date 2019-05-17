@@ -13,7 +13,7 @@
   {
     "id": "2",
     "pergunta": "Não são problemas de segurança na alocação contígua simples:",
-    "resposta": "",
+    "resposta": "2",
     "respostas": [
       "Acesso à memória destinada ao S.O.",
       "Desperdício de espaço de memória",
@@ -24,7 +24,7 @@
   {
     "id": "3",
     "pergunta": "O que é swapping?",
-    "resposta": "",
+    "resposta": "2",
     "respostas": [
       "Técnica que resolve o problema de hardware",
       "Termo alternativo e técnico para swing",
@@ -35,7 +35,7 @@
   {
     "id": "4",
     "pergunta": "Não são funções básicas da gerência de memória:",
-    "resposta": "",
+    "resposta": "3",
     "respostas": [
       "Maximizar o compartilhamento do processador",
       "Permitir que novos processos sejam aceitos e executados",
@@ -46,7 +46,7 @@
   {
     "id": "5",
     "pergunta": "Não são estratégias de alocação de partição",
-    "resposta": "",
+    "resposta": "1",
     "respostas": [
       "Best-fit",
       "Smart-fit",
@@ -57,7 +57,7 @@
   {
     "id": "6",
     "pergunta": "Na estratégia worst-fit:",
-    "resposta": "",
+    "resposta": "1",
     "respostas": [
       "A melhor partição é escolhida",
       "A pior partição é escolhida",
@@ -68,7 +68,7 @@
   {
     "id": "7",
     "pergunta": "A memória virtual permite:",
-    "resposta": "",
+    "resposta": "1",
     "respostas": [
       "Aumentar a fragmentação da memória principal",
       "Um número maior de processos compartilhando a memória principal",
@@ -79,7 +79,7 @@
   {
     "id": "8",
     "pergunta": "O conceito de memória virtual se aproxima muito da ideia de:",
-    "resposta": "",
+    "resposta": "0",
     "respostas": [
       "Um vetor",
       "Um setor",
@@ -90,7 +90,7 @@
   {
     "id": "9",
     "pergunta": "Um processo é formado pelo:",
-    "resposta": "",
+    "resposta": "2",
     "respostas": [
       "Contexto de software, contexto de programação e pelo espaço de endereçamento",
       "Contexto de hardware, contexto de swap e pelo espaço de endereçamento",
@@ -101,7 +101,7 @@
   {
     "id": "10",
     "pergunta": "O espaço de endereçamento virtual:",
-    "resposta": "",
+    "resposta": "0",
     "respostas": [
       "Não tem nenhuma relação direta com os endereços no espaço real",
       "Tem nenhuma relação direta com os endereços no espaço real",
@@ -112,7 +112,7 @@
   {
     "id": "11",
     "pergunta": "Sobre o Mapeamento:",
-    "resposta": "",
+    "resposta": "3",
     "respostas": [
       "É um mecanismo que transforma os endereços não virtuais em endereços reais",
       "É um mecanismo que transforma os endereços reais em endereços virtuais",
