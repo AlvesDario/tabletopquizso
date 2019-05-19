@@ -64,6 +64,7 @@ export default class App extends Component {
 
   // move o jogador atual (passos)casas
   caminha = (passos) => {
+    if(this.state.temp_player.pos>=this.state.map.length)return alert("Fim do jogo");
     let newpos = this.state.temp_player;
     newpos['pos'] += passos;
 
@@ -77,10 +78,8 @@ export default class App extends Component {
 
   // atualiza o número do dado na variável temp
   updateDado = async (newnum) => {
-    console.log(newnum);
     await this.setState({ dado: newnum });
     this.caminha(newnum);
-    console.log("dado", this.state.dado);
   }
   
   // toggle popup e escolhe uma pergunta aleatória
@@ -113,7 +112,7 @@ export default class App extends Component {
       <Header p={this.state.temp_player}/>
       <Dado onClick = { this.updateDado } num = { this.state.dado }/>
       {/* Gera a tela de pergunta */}
-      <button onClick={ this.togglePopup.bind(this) }>show popup</button>
+      {/* <button onClick={ this.togglePopup.bind(this) }>show popup</button> */}
 
       <Mapa posicoes = { this.state.map } update = { this.caminha } players = {this.state.players.concat(this.state.temp_player)} />
       { this.state.showPopup ? 
